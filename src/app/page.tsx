@@ -18,12 +18,21 @@ export default function HomePage() {
     return ["all", ...Array.from(unique)];
   }, [products]);
 
-  const visibleProducts = products.filter((product) => {
-    if (category !== "all") {
-      return product.category === category;
-    }
-    return product.title.includes(search);
-  });
+
+  const visibleProducts = useMemo(() => {
+    const query = search.toLowerCase().trim();
+    return products
+      .filter((product) => category === 'all' || product.category === category)
+      .filter((product) => product.title.toLowerCase().includes(query))
+
+  }, [search, category, products])
+
+  // const visibleProducts = products.filter((product) => {
+  //   if (category !== "all") {
+  //     return product.category === category;
+  //   }
+  //   return product.title.includes(search);
+  // });
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
