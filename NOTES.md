@@ -24,6 +24,12 @@ For each: what was wrong, **why** it was wrong, and how I fixed it.
 2. [Why] -> When we filter products by category and searching, array 'index' stays the same for starting items, because the key didn't change, just indexes are suffled, so react reused the existing cards and animation never triggered.
 3. [How] -> Changed key={index} to key={product.id}. now each product has a unique key, so when product is removed its animation runs smoothly.
 
+## BUG 4 : Typescript 'any' types in useProduct custom hook
+
+1. [What] -> 'any' type was used in 'useState<any[]>([])' and 'data: any' in useProducts custom hook.
+2. [Why]  -> using 'any' bypass the TypeScript type checking, it removes type safety for all components that use 'products'
+3. [How]  -> replaced 'any' with 'products[]' using the 'Product' interface which is already created in product.ts file
+
 ## Features I completed
 
 -
