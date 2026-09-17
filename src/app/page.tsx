@@ -6,6 +6,7 @@ import { Filters } from "@/components/Filters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { ProductModal } from "@/components/ProductModal";
 import { Product } from "@/types/product";
+import { ErrorState } from "@/components/ErrorState";
 
 export default function HomePage() {
   const { products, loading, error } = useProducts();
@@ -53,12 +54,22 @@ export default function HomePage() {
 
       {loading && <p className="mt-8 text-slate-500">Loading products…</p>}
 
+
+      {error && (
+        <ErrorState
+          message={error}
+        />
+      )}
       {/*
         TODO(candidate): the hook already exposes `error`, but nothing renders it.
         Show a helpful error state to the user when the request fails.
       */}
 
-      <ProductGrid products={visibleProducts} onSelect={setSelected} />
+      {
+        !loading && !error && (
+          <ProductGrid products={visibleProducts} onSelect={setSelected} />
+        )
+      }
 
       <ProductModal product={selected} onClose={() => setSelected(null)} />
     </main>

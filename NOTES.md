@@ -30,9 +30,19 @@ For each: what was wrong, **why** it was wrong, and how I fixed it.
 2. [Why]  -> using 'any' bypass the TypeScript type checking, it removes type safety for all components that use 'products'
 3. [How]  -> replaced 'any' with 'products[]' using the 'Product' interface which is already created in product.ts file
 
+## BUG 5 : "No Products match your filter" message was showing on screen while loading products or when error happend
+
+1. [What] -> "No Products match your filter" message was showing on screen while loading products or when api error happened.
+2. [Why] -> When loading or error, products array is empty, the productGrid component was always rendering, so it thought no product were found
+3. [How] -> added (!loading && !error &&) condition and wrap productGrid component in it. so it only shows when data is fully loaded into the array.
+
+
 ## Features I completed
 
--
+** Render the error states
+
+1. 'useProduct' custom hook was giving error, but it was not used anywhere.
+2. i made a seperate component called 'ErrorState' to show a clean error message.
 
 ## Decisions
 
