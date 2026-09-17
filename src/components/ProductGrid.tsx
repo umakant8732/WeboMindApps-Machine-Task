@@ -19,12 +19,12 @@ export function ProductGrid({ products, onSelect }: ProductGridProps) {
       <AnimatePresence>
         {products.map((product, index) => (
           <motion.div
-            key={index}
+            key={product.id}
             layout
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, delay: index * 0.03 }}
+            transition={{ duration: 1.0, delay: index * 0.03 }}
           >
             <ProductCard product={product} onClick={() => onSelect(product)} />
           </motion.div>
