@@ -6,9 +6,13 @@
 
 For each: what was wrong, **why** it was wrong, and how I fixed it.
 
-1.
-2.
-3.
+## Bug1
+
+## Infinite API Fetch Loop in useProducts (custom hook)
+
+1. [what] -> The useEffect hook had dependency array, inside that array products state was there
+2. [why] -> Inside the useEffect hook setProductData was updating the products state, and products state was there in dependency array, every update triggered the useEffect, and it causing an infinite api request.
+3. [How] -> I changed the dependency array, i remove 'products' state from the array, now useEffect runs one time when component mount
 
 ## Features I completed
 
