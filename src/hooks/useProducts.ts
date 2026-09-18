@@ -40,7 +40,6 @@ export function useProducts() {
     return () => {
       cancelled = true;
     };
-  }, []); // in dependency array product state was here, i removed it now, infinite loop has stopped
-
+  }, []); 
   return { products, loading, error };
 }

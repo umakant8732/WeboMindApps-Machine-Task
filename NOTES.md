@@ -36,6 +36,12 @@ For each: what was wrong, **why** it was wrong, and how I fixed it.
 2. [Why] -> When loading or error, products array is empty, the productGrid component was always rendering, so it thought no product were found
 3. [How] -> added (!loading && !error &&) condition and wrap productGrid component in it. so it only shows when data is fully loaded into the array.
 
+## BUG 6: Hydration Error due to timestamps
+
+1. [What] -> console showed hydration error, "Text content did not match"
+2. [Why] -> I hadn't worked with Next.js SSR before, so i searched this error, then i get to know that new Date.toLocaleTimeString() gives different times on  server and browser, so the HTML didn't match.
+3. [How] -> added "suppressHydrationWarning" to the "p" element,
+it tells next.js to expect difference in dynamic values. suggested by google.
 
 ## Features I completed
 
@@ -59,4 +65,8 @@ Anywhere I had to choose between options — and why I chose what I did.
 
 What I'd improve or add next.
 
--
+1. **Debounced Search:**
+   - We can implement debounce on search input field, it will stop recalculation on every keystroke.
+  
+2. **Pagination**
+   - if Product catalog contains 100+ products, instead of showing all the products on single page, we display the products in multiple pages.
