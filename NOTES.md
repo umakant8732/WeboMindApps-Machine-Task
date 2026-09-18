@@ -39,10 +39,15 @@ For each: what was wrong, **why** it was wrong, and how I fixed it.
 
 ## Features I completed
 
-** Render the error states
+## Render the error states
 
 1. 'useProduct' custom hook was giving error, but it was not used anywhere.
 2. i made a seperate component called 'ErrorState' to show a clean error message.
+
+## Made modal animation smooth while opening and close
+
+1. Implemented smooth transition using Framer Motion "AnimatePresence  and Motion.div"
+2. commented the code if(!product) return null; the code was the reason animation was not happening.
 
 ## Decisions
 
